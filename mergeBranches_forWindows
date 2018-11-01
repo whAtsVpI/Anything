@@ -1,0 +1,19 @@
+rem @echo off & setlocal enabledelayedexpansion
+
+set str=%1 %2 %3 %4 %5 %6 %7 %8 %9
+set dateString=%date:~0,4%%date:~5,2%%date:~8,2%
+call:delright
+
+for %%i in (%str%) do (                    
+echo "==================================Mergeing====================================" >>F:\javaWorkSpace\Jenkinse\workspace\CodeMerger\%dateString%
+echo Merging %%i >>F:\javaWorkSpace\Jenkinse\workspace\CodeMerger\%dateString%
+git merge remotes/origin/%%i >>F:\javaWorkSpace\Jenkinse\workspace\CodeMerger\%dateString%
+if NOT %errorlevel% == 0 (echo Silver Conflict!!! Conflict!!! Conflict!!! >>F:\javaWorkSpace\Jenkinse\workspace\CodeMerger\%dateString%)
+)
+
+goto:eof
+	
+:delright  
+if "%str:~-1%"==" " set str=%str:~0,-1%&&goto delright  
+echo 去掉右边空格后结果为:%str%
+
