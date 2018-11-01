@@ -1,0 +1,219 @@
+set +x
+today=$(date +%Y%m%d)
+
+currentHour=$(date +%H)
+currentTime=$(date +%Y%m%d%H%M)
+if [ $currentHour -eq 23 ]
+then
+	echo Auto Set value
+	Silver=true
+    FeMain=true
+    Trade=true
+    QuanZi=true
+    HangQing=true
+    Payment=true
+    DataCenter=true
+    CRMBack=true
+    CRMFE=false
+fi
+	
+
+cd /Users/baoxianqa/Documents/silverCode
+echo ===================================Handling Silver===================================
+if ${Silver};
+then 
+	cd silver   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo Silver Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass Silver;
+fi
+echo ===================================Handling FeMain===================================
+if ${FeMain};
+then 
+	cd fe-main   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo Silver Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass FeMain;
+fi
+echo ===================================Handling Trade===================================
+if ${Trade};
+then 
+	cd faTrade   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo Silver Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass Trade;
+fi
+echo ===================================Handling QuanZi===================================
+if ${QuanZi};
+then 
+	cd faquanzi   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo Silver Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass QuanZi;
+fi
+echo ===================================Handling HangQing===================================
+if ${HangQing};
+then 
+	cd silver-market   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo Silver Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass HangQing;
+fi
+echo ===================================Handling Payment===================================
+if ${Payment};
+then 
+	cd fapayment   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo Payment Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass Payment;
+fi
+echo ===================================Handling DataCenter===================================
+if ${DataCenter};
+then 
+	cd faDataCenter   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo DataCenter Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass DataCenter;
+fi
+echo ===================================Handling CRMBack===================================
+if ${CRMBack};
+then 
+	cd faConsultancy   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo CRMBack Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass CRMBack;
+fi
+echo ===================================Handling CRMFE===================================
+if ${CRMFE};
+then 
+	cd faConsultancyFe   #silver为代码目录，复制后替换
+    set +e
+    git fetch
+    git checkout "r_"${today}"_1"
+    git branch|grep "r_"${today}"_1"
+    if test $? -eq 0
+    then
+    	git checkout master
+    	git pull
+    	git fetch
+    	git merge remotes/origin/"r_"${today}"_1"
+        git tag "master_"${currentTime}
+        git push --tags --progress "origin" master:master
+    else
+    	echo CRMFE Todays Release Branch Not Found
+    fi
+    cd ..
+else echo Pass CRMFE;
+fi
