@@ -1,0 +1,393 @@
+set -x
+today=$(date +%Y%m%d)
+cd /Users/baoxianqa/Documents/silverCode/workspace/CodeMerger_Master
+#删除变更文件
+rm *
+#建立变更文件
+echo 注释行,这是变更日志~~~~~~>${today}
+cd /Users/baoxianqa/Documents/silverCode
+
+if  [ ! -n "$Silver" ] ;
+then
+    echo "No Silver Branches!"
+else
+    echo "the word you input is $Silver"
+    cd silver   #silver为代码目录，复制后替换
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${Silver}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+
+if  [ ! -n "$FeMain" ] ;
+then
+    echo "No FeMain Branches!"
+else
+    echo "the word you input is $FeMain"
+    cd fe-main   
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${FeMain}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+
+if  [ ! -n "$Trade" ] ;
+then
+    echo "No Trade Branches!"
+else
+    echo "the word you input is $Trade"
+    cd faTrade   
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${Trade}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+
+if  [ ! -n "$QuanZi" ] ;
+then
+    echo "No QuanZi Branches!"
+else
+    echo "the word you input is $QuanZi"
+    cd faquanzi   
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${QuanZi}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+
+if  [ ! -n "$HangQing" ] ;
+then
+    echo "No HangQing Branches!"
+else
+    echo "the word you input is $HangQing"
+    cd silver-market   
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${HangQing}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+
+if  [ ! -n "$Payment" ] ;
+then
+    echo "No Payment Branches!"
+else
+    echo "the word you input is $Payment"
+    cd fapayment   
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${Payment}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+
+if  [ ! -n "$DataCenter" ] ;
+then
+    echo "No DataCenter Branches!"
+else
+    echo "the word you input is $DataCenter"
+    cd faDataCenter   #silver为代码目录，复制后替换
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${DataCenter}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+if  [ ! -n "$CRMBack" ] ;
+then
+    echo "No CRMBack Branches!"
+else
+    echo "the word you input is $CRMBack"
+    cd faConsultancy   #silver为代码目录，复制后替换
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${CRMBack}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
+if  [ ! -n "$CRMFE" ] ;
+then
+    echo "No CRMFE Branches!"
+else
+    echo "the word you input is $CRMFE"
+    cd faConsultancyFe   #silver为代码目录，复制后替换
+    git checkout master
+    git pull
+    git fetch
+    set +e
+    git branch|grep "r_"${today}"_1"
+    #git branch|grep "master"
+    if test $? -eq 0
+    then
+    	echo "cba"
+    	if test ${MergeMode} = "new"
+        then
+        	git branch -D "r_"${today}"_1"
+            git push origin --delete "r_"${today}"_1"
+            git checkout -b "r_"${today}"_1"
+        else
+        	git checkout "r_"${today}"_1"
+            git branch --set-upstream-to=origin/"r_"${today}"_1"
+            git pull
+        fi
+    else
+    	git checkout -b "r_"${today}"_1"
+    fi
+	sh mergeBranches.sh ${CRMFE}
+    if test $? -eq 0
+    then 
+    	git push --set-upstream origin "r_"${today}"_1"
+    else 
+    	git merge --abort
+        git checkout master
+        git branch -D "r_"${today}"_1"
+    	exit 1
+    fi
+    cd ..
+fi
+
+
