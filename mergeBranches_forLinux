@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+str=$*
+echo ${#str}
+dateString=$(date +%Y%m%d)
+echo ${str}
+for a in $str
+do
+	echo "==================================Mergeing====================================" >>/Users/baoxianqa/Documents/silverCode/workspace/CodeMerger_Master/${dateString}
+	echo "Merging "$a >>/Users/baoxianqa/Documents/silverCode/workspace/CodeMerger_Master/${dateString}
+	git merge remotes/origin/${a} >>/Users/baoxianqa/Documents/silverCode/workspace/CodeMerger_Master/${dateString}
+	if test $? -ne 0
+	then exit 1
+	fi
+done
